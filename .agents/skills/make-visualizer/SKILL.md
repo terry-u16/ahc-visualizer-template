@@ -1,6 +1,6 @@
 ---
 name: make-visualizer
-description: AHCスタイルのヒューリスティックコンテスト用WASMビジュアライザを実装する。problem_description.txt と tools/src/ が揃っているときに使用する。フロントエンド(React/TypeScript)は原則変更しない。
+description: AHCスタイルのヒューリスティックコンテスト用WASMビジュアライザを実装する。problem.html と tools/src/ が揃っているときに使用する。フロントエンド(React/TypeScript)は原則変更しない。
 ---
 
 # make-visualizer
@@ -14,7 +14,7 @@ description: AHCスタイルのヒューリスティックコンテスト用WASM
 
 以下を確認し、問題があれば停止してユーザーに伝えてください:
 
-- `problem_description.txt` を読んで、プレースホルダーのまま（「コンテストの問題文をここに記載してください」のような内容）であれば停止して「problem_description.txt に問題文を記載してください」と伝える
+- `problem.html` を読んで、プレースホルダーのまま（「コンテストの問題文をここに記載してください」のような内容）であれば停止して「problem.html に問題文を記載してください」と伝える
 - `tools/src/` が存在しなければ停止して「公式から配布されるテスターコードを `tools/src/` に配置してください」と伝える
 
 両方問題なければステップ2へ進む。
@@ -25,7 +25,7 @@ description: AHCスタイルのヒューリスティックコンテスト用WASM
 
 以下の2ファイルを読む:
 
-1. `problem_description.txt` — 入出力フォーマット・状態・スコア計算を確認
+1. `problem.html` — 入出力フォーマット・状態・スコア計算を確認
 2. `tools/src/lib.rs` — 構造体定義と公開関数のシグネチャを把握（**`tools/src/bin/` 以下は読まない**）
 
 読んだら、**実装せずに**以下の内容をユーザーに提示してください:
@@ -198,7 +198,7 @@ wasm-pack build --target web --out-dir ../public/wasm
 - `cargo check` でエラーが出たら原因を特定して修正してから `wasm-pack build` を実行する
 - クレートのバージョン不一致が原因の場合のみ `wasm/Cargo.toml` を修正する
 
-ビルドが完了したらユーザーに `yarn dev` でサーバーを起動して動作確認するよう伝える:
+ビルドが完了したらユーザーに `pnpm dev` でサーバーを起動して動作確認するよう伝える:
 1. seed 入力 → 入力エリアに問題入力が表示される（`gen` OK）
 2. 出力貼り付け → スライダーの上限が更新される（`get_max_turn` OK）
 3. スライダーを動かす → SVG が描画される（`vis` OK）
