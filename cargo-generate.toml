@@ -1,0 +1,4 @@
+[template]
+name = "ahc-visualizer-template"
+description = "A template for AHC visualizer"
+version = "0.1.0"
