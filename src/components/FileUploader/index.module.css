@@ -1,0 +1,18 @@
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.label {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+.select {
+  min-width: 180px;
+}

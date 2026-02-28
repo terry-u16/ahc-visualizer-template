@@ -16,7 +16,21 @@ const InitWasm: FC = () => {
     });
   }, []);
 
-  return wasmInitialized ? <AHCLikeVisualizer /> : <></>;
+  return wasmInitialized ? (
+    <AHCLikeVisualizer />
+  ) : (
+    <div
+      style={{
+        minHeight: '100vh',
+        display: 'grid',
+        placeItems: 'center',
+        color: '#4c6078',
+        fontWeight: 600,
+      }}
+    >
+      Initializing WASM...
+    </div>
+  );
 };
 
 export default InitWasm;

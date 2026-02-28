@@ -1,0 +1,109 @@
+:root {
+  color-scheme: light;
+
+  --bg-0: #eef4ff;
+  --bg-1: #dbeafe;
+  --surface: rgb(255 255 255 / 84%);
+  --surface-strong: #fff;
+  --border: #c7d7ef;
+  --text: #0b1b3a;
+  --muted: #3e5680;
+  --accent: #1d4ed8;
+  --accent-2: #0ea5e9;
+  --danger: #be123c;
+  --shadow: 0 14px 28px rgb(30 64 175 / 12%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: 'Space Grotesk', 'Noto Sans JP', 'Hiragino Kaku Gothic ProN',
+    Meiryo, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 85% -10%, rgb(59 130 246 / 22%), transparent 35%),
+    radial-gradient(circle at 10% 20%, rgb(37 99 235 / 20%), transparent 30%),
+    linear-gradient(160deg, var(--bg-0), var(--bg-1));
+}
+
+input,
+select,
+textarea,
+button {
+  font: inherit;
+  color: inherit;
+}
+
+input[type='number'],
+input[type='text'],
+select,
+textarea {
+  padding: 8px 10px;
+  background: var(--surface-strong);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+textarea {
+  line-height: 1.45;
+  resize: vertical;
+}
+
+input[type='number']:focus,
+input[type='text']:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--accent-2);
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(14 165 233 / 20%);
+}
+
+input[type='button'],
+button {
+  align-self: center;
+  height: 36px;
+  padding: 0 14px;
+  font-weight: 600;
+  line-height: 1;
+  color: #fff;
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  border: 1px solid rgb(29 78 216 / 28%);
+  border-radius: 10px;
+  box-shadow:
+    0 6px 14px rgb(37 99 235 / 22%),
+    inset 0 1px 0 rgb(255 255 255 / 20%);
+  transition: transform 0.12s ease, filter 0.2s ease, box-shadow 0.2s ease;
+}
+
+input[type='button']:hover,
+button:hover {
+  filter: brightness(1.03);
+  box-shadow:
+    0 8px 18px rgb(37 99 235 / 26%),
+    inset 0 1px 0 rgb(255 255 255 / 22%);
+}
+
+input[type='button']:active,
+button:active {
+  box-shadow:
+    0 3px 8px rgb(37 99 235 / 20%),
+    inset 0 1px 0 rgb(255 255 255 / 15%);
+  transform: translateY(1px);
+}
+
+input[type='button']:disabled,
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}

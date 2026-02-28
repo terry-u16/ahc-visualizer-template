@@ -33,6 +33,7 @@ const InputOutput: FC<InputOutputProps> = ({
       input: e.target.value,
     }));
   };
+
   const onChangeOutput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setVisualizerSettingInfo((prev) => ({
       ...prev,
@@ -61,11 +62,12 @@ const InputOutput: FC<InputOutputProps> = ({
   };
 
   return (
-    <>
-      <div>
-        <label>
+    <div className={styles.panel}>
+      <div className={styles.row}>
+        <label className={styles.labelInline}>
           Seed:
           <input
+            className={styles.numberInput}
             type="number"
             value={visualizerSettingInfo.seed}
             min={'0'}
@@ -73,11 +75,11 @@ const InputOutput: FC<InputOutputProps> = ({
             onChange={onChangeSeed}
           />
         </label>
-        <label
-          className={styles.leftMargin} //eslint-disable-line
-        >
+
+        <label className={styles.labelInline}>
           #cases:
           <input
+            className={styles.caseInput}
             type="number"
             value={downloadCases}
             onChange={(e) => {
@@ -87,6 +89,7 @@ const InputOutput: FC<InputOutputProps> = ({
             max="10000"
           />
         </label>
+
         <input
           type="button"
           value={buttonText}
@@ -101,15 +104,12 @@ const InputOutput: FC<InputOutputProps> = ({
           }}
         />
 
-        <label
-          className={styles.leftMargin} //eslint-disable-line
-        >
+        <label className={styles.labelInline}>
           問題番号:
           <select
+            className={styles.problemSelect}
             value={visualizerSettingInfo.problemId}
-            onChange={(e) => {
-              onChangeProblemId(e);
-            }}
+            onChange={onChangeProblemId}
           >
             <option value="A">A</option>
             <option value="B">B</option>
@@ -117,30 +117,28 @@ const InputOutput: FC<InputOutputProps> = ({
           </select>
         </label>
       </div>
-      <div>
-        <label>
-          Input: <br />
-          <textarea
-            className={styles.textArea} //eslint-disable-line
-            rows={4}
-            value={visualizerSettingInfo.input}
-            onChange={onChangeInput}
-            onDrop={onDropFileIntoInput}
-          ></textarea>
-        </label>
+
+      <div className={styles.block}>
+        <span className={styles.blockLabel}>Input</span>
+        <textarea
+          className={styles.textArea}
+          rows={3}
+          value={visualizerSettingInfo.input}
+          onChange={onChangeInput}
+          onDrop={onDropFileIntoInput}
+        ></textarea>
       </div>
-      <div>
-        <label>
-          Output: <br />
-          <textarea
-            className={styles.textArea} //eslint-disable-line
-            rows={4}
-            value={visualizerSettingInfo.output}
-            onChange={onChangeOutput}
-          ></textarea>
-        </label>
+
+      <div className={styles.block}>
+        <span className={styles.blockLabel}>Output</span>
+        <textarea
+          className={styles.textArea}
+          rows={3}
+          value={visualizerSettingInfo.output}
+          onChange={onChangeOutput}
+        ></textarea>
       </div>
-    </>
+    </div>
   );
 };
 

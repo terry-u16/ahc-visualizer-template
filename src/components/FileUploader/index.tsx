@@ -1,6 +1,7 @@
 import type { FC } from 'react';
 import { useState } from 'react';
 import type { VisualizerSettingInfo } from '../../types';
+import styles from './index.module.css';
 
 type FileUploaderProps = {
   setVisualizerSettingInfo: React.Dispatch<
@@ -54,19 +55,21 @@ const FileUploader: FC<FileUploaderProps> = ({ setVisualizerSettingInfo }) => {
   };
 
   return (
-    <>
-      <p>
-        <label>
-          File:
-          <select disabled={selectDisabled} onChange={onSelectFile}>
-            {files.map((file, index) => (
-              <option key={`option-${index}`}>{file.name}</option>
-            ))}
-          </select>
-        </label>
-        <input type="file" onChange={onFolderUpload} {...otherAtt} />
-      </p>
-    </>
+    <div className={styles.row}>
+      <label className={styles.label}>
+        File:
+        <select
+          className={styles.select}
+          disabled={selectDisabled}
+          onChange={onSelectFile}
+        >
+          {files.map((file, index) => (
+            <option key={`option-${index}`}>{file.name}</option>
+          ))}
+        </select>
+      </label>
+      <input type="file" onChange={onFolderUpload} {...otherAtt} />
+    </div>
   );
 };
 

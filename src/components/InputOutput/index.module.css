@@ -1,7 +1,51 @@
-.textArea {
-  width: 650px;
+.panel {
+  display: grid;
+  gap: 12px;
 }
 
-.leftMargin {
-  margin-left: 10px;
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 12px;
+  align-items: center;
+}
+
+.labelInline {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+.numberInput {
+  width: 112px;
+}
+
+.caseInput {
+  width: 88px;
+}
+
+.problemSelect {
+  min-width: 68px;
+}
+
+.block {
+  display: grid;
+  gap: 6px;
+}
+
+.blockLabel {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.textArea {
+  width: 100%;
+  min-height: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
+  font-size: 0.92rem;
+  color: var(--muted);
 }

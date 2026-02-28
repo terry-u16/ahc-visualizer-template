@@ -3,6 +3,7 @@ import { useState, useCallback } from 'react';
 import GIF from 'gif.js';
 import { vis } from '../../../public/wasm/rust';
 import type { VisualizerSettingInfo } from '../../types';
+import styles from './index.module.css';
 
 type SvgViewerProps = {
   visualizerSettingInfo: VisualizerSettingInfo;
@@ -62,18 +63,9 @@ const SvgViewer: FC<SvgViewerProps> = ({ visualizerSettingInfo }) => {
       setAnimationButtonDescription(
         String(Math.round(50 + 50 * p)).padStart(3, ' ') + '% finished',
       );
-      /*
-      save_gif.value =
-        String(Math.round(50 + 50 * p)).padStart(3, ' ') + '% finished';
-        */
     });
-    function addFrame(t: number) {
-      /*
-      save_gif.value =
-        String(Math.round((50.0 * t) / max_turn)).padStart(3, ' ') +
-        '% finished';
-        */
 
+    function addFrame(t: number) {
       setAnimationButtonDescription(
         String(Math.round((50.0 * t) / maxTurn)).padStart(3, ' ') +
           '% finished',
@@ -126,23 +118,21 @@ const SvgViewer: FC<SvgViewerProps> = ({ visualizerSettingInfo }) => {
   ]);
 
   return (
-    <>
-      <div>
-        <input
-          type="button"
-          id="save_png"
-          value="Save as PNG"
-          onClick={onSavePng}
-        />
-        <input
-          type="button"
-          id="save_gif"
-          value={animationButtonDescription}
-          onClick={onSaveGif}
-          disabled={animationButtonDisabled}
-        />
-      </div>
-    </>
+    <div className={styles.actions}>
+      <input
+        type="button"
+        id="save_png"
+        value="Save as PNG"
+        onClick={onSavePng}
+      />
+      <input
+        type="button"
+        id="save_gif"
+        value={animationButtonDescription}
+        onClick={onSaveGif}
+        disabled={animationButtonDisabled}
+      />
+    </div>
   );
 };
 

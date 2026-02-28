@@ -1,19 +1,120 @@
+.wrapper {
+  display: grid;
+  gap: 10px;
+}
+
+.controlRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
 .sliderButton {
-    position: relative;
-    bottom: 5px;
-    width: 32px;
-    height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border-radius: 999px;
 }
 
-.speedSlider{
-    width: 200px;
+.playIcon {
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-left: 12px solid #fff;
 }
 
-.turnInput{
-    width:70px;
-    text-align: right;
+.stopIcon {
+  width: 11px;
+  height: 11px;
+  background: #fff;
+  border-radius: 2px;
 }
 
-.turnSlider{
-    width: 780px;
+.speedGroup {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.speedSlider {
+  width: min(220px, 40vw);
+}
+
+.turnGroup {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.turnInput {
+  width: 82px;
+  text-align: right;
+}
+
+.turnSlider {
+  width: 100%;
+}
+
+.speedSlider,
+.turnSlider {
+  height: 6px;
+  appearance: none;
+  background: linear-gradient(90deg, rgb(29 78 216 / 65%), rgb(14 165 233 / 65%));
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1px rgb(29 78 216 / 20%);
+}
+
+.speedSlider::-webkit-slider-runnable-track,
+.turnSlider::-webkit-slider-runnable-track {
+  height: 6px;
+  background: linear-gradient(90deg, rgb(29 78 216 / 65%), rgb(14 165 233 / 65%));
+  border-radius: 999px;
+}
+
+.speedSlider::-moz-range-track,
+.turnSlider::-moz-range-track {
+  height: 6px;
+  background: linear-gradient(90deg, rgb(29 78 216 / 65%), rgb(14 165 233 / 65%));
+  border: none;
+  border-radius: 999px;
+}
+
+.speedSlider::-webkit-slider-thumb,
+.turnSlider::-webkit-slider-thumb {
+  width: 16px;
+  height: 16px;
+  margin-top: -5px;
+  appearance: none;
+  background: #1d4ed8;
+  border: 2px solid #fff;
+  border-radius: 999px;
+  box-shadow: 0 2px 8px rgb(29 78 216 / 35%);
+}
+
+.speedSlider::-moz-range-thumb,
+.turnSlider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: #1d4ed8;
+  border: 2px solid #fff;
+  border-radius: 999px;
+  box-shadow: 0 2px 8px rgb(29 78 216 / 35%);
+}
+
+.speedSlider:focus-visible,
+.turnSlider:focus-visible {
+  outline: none;
+  box-shadow:
+    inset 0 0 0 1px rgb(29 78 216 / 20%),
+    0 0 0 3px rgb(14 165 233 / 22%);
 }
