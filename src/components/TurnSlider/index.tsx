@@ -16,9 +16,6 @@ const TurnSlider: FC<TurnSliderProps> = ({
 }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [sliderSpeed, setSliderSpeed] = useState(30);
-  const [intervalId, setIntervalId] = useState<ReturnType<
-    typeof setInterval
-  > | null>(null);
 
   const onChangeSliderSpeed = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSliderSpeed(Number(e.target.value));
@@ -32,35 +29,38 @@ const TurnSlider: FC<TurnSliderProps> = ({
   };
 
   const stopSlider = useCallback(() => {
-    if (intervalId) {
-      clearInterval(intervalId);
-      setIntervalId(null);
-    }
     setIsPlaying(false);
-  }, [intervalId]);
+  }, []);
 
-  const incrementTurn = useCallback(() => {
-    setVisualizerSettingInfo((prev) => ({
-      ...prev,
-      turn: prev.turn + 1,
-    }));
-  }, [setVisualizerSettingInfo]);
-
-  const startSlider = useCallback(() => {
+  const startSlider = () => {
     if (visualizerSettingInfo.maxTurn <= 0) {
       return;
     }
     setIsPlaying(true);
+  };
+
+  // 再生中は速度変更のたびにタイマーを張り直し、即時反映させる
+  useEffect(() => {
+    if (!isPlaying || visualizerSettingInfo.maxTurn <= 0) {
+      return;
+    }
     const tickMilliseconds =
       (1000 * 300) / visualizerSettingInfo.maxTurn / sliderSpeed;
-    const id = setInterval(incrementTurn, tickMilliseconds);
-    setIntervalId(id);
+    const id = setInterval(() => {
+      setVisualizerSettingInfo((prev) => ({
+        ...prev,
+        turn: prev.turn + 1,
+      }));
+    }, tickMilliseconds);
+
+    return () => {
+      clearInterval(id);
+    };
   }, [
-    setIntervalId,
-    setIsPlaying,
+    isPlaying,
     visualizerSettingInfo.maxTurn,
     sliderSpeed,
-    incrementTurn,
+    setVisualizerSettingInfo,
   ]);
 
   // turnがmaxTurnになったらタイマーを止める
