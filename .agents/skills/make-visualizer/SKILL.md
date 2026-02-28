@@ -198,10 +198,13 @@ wasm-pack build --target web --out-dir ../public/wasm
 - `cargo check` でエラーが出たら原因を特定して修正してから `wasm-pack build` を実行する
 - クレートのバージョン不一致が原因の場合のみ `wasm/Cargo.toml` を修正する
 
-ビルドが完了したらユーザーに `pnpm dev` でサーバーを起動して動作確認するよう伝える:
-1. seed 入力 → 入力エリアに問題入力が表示される（`gen` OK）
-2. 出力貼り付け → スライダーの上限が更新される（`get_max_turn` OK）
-3. スライダーを動かす → SVG が描画される（`vis` OK）
+ビルドが完了したら、以下の作業を行うようユーザーに促す:
+1. `middleware.ts` のユーザー名とパスワードを `**TBD**` から変更する
+2. `public/wasm` 以下のファイルをGitの管理下に置くため、 `.gitignore` を削除する
+3. `pnpm dev` でサーバーを起動して動作確認する
+  - seed 入力 → 入力エリアに問題入力が表示される（`gen` OK）
+  - 出力貼り付け → スライダーの上限が更新される（`get_max_turn` OK）
+  - スライダーを動かす → SVG が描画される（`vis` OK）
 
 ---
 

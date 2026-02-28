@@ -19,7 +19,7 @@
   "parserOptions": {
     "ecmaVersion": "latest",
     "tsconfigRootDir": ".",
-    "project": ["./tsconfig.json"],
+    "project": ["./tsconfig.eslint.json"],
     "sourceType": "module"
   },
   "plugins": ["@typescript-eslint", "jest", "jsx-a11y", "react", "react-hooks"],
