@@ -1,0 +1,7 @@
+[tasks.dl]
+description = "download tools"
+run = [
+    'curl -L -o tools.zip {% raw %}{{arg(name="url")}}{% endraw %}',
+    'unzip -q tools.zip',
+    'rm tools.zip',
+]
