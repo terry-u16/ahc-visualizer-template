@@ -54,6 +54,12 @@ textarea {
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
+select,
+option {
+  color: var(--muted);
+  background-color: var(--surface-strong);
+}
+
 textarea {
   line-height: 1.45;
   resize: vertical;
