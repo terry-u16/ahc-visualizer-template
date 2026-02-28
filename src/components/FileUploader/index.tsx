@@ -11,7 +11,6 @@ type FileUploaderProps = {
 
 const FileUploader: FC<FileUploaderProps> = ({ setVisualizerSettingInfo }) => {
   const [selectDisabled, setSelectDisabled] = useState(true);
-
   const [files, setFiles] = useState<File[]>([]);
 
   const setFileToOutput = (file: File) => {
@@ -68,7 +67,12 @@ const FileUploader: FC<FileUploaderProps> = ({ setVisualizerSettingInfo }) => {
           ))}
         </select>
       </label>
-      <input type="file" onChange={onFolderUpload} {...otherAtt} />
+      <input
+        className={styles.fileInput}
+        type="file"
+        onChange={onFolderUpload}
+        {...otherAtt}
+      />
     </div>
   );
 };
