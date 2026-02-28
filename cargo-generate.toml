@@ -2,3 +2,6 @@
 name = "ahc-visualizer-template"
 description = "A template for AHC visualizer"
 version = "0.1.0"
+
+# 置換（substitution）を行わないファイル
+exclude = ["*.png", "*.tsx"]
