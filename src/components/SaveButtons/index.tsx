@@ -1,6 +1,7 @@
 import type { FC } from 'react';
 import { useState, useCallback } from 'react';
 import GIF from 'gif.js';
+import gifWorkerUrl from 'gif.js/dist/gif.worker?url';
 import { vis } from '../../../public/wasm/rust';
 import type { VisualizerSettingInfo } from '../../types';
 import styles from './index.module.css';
@@ -120,7 +121,7 @@ const SvgViewer: FC<SvgViewerProps> = ({ visualizerSettingInfo }) => {
     const gif = new GIF({
       workers: 2,
       quality: 100,
-      workerScript: '/node_modules/gif.js/dist/gif.worker.js',
+      workerScript: gifWorkerUrl,
     });
     gif.on('progress', function (p) {
       setAnimationButtonDescription(
